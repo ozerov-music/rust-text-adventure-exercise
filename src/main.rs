@@ -16,7 +16,9 @@ fn main() {
     let living_room_exits = Vec::new();
     let living_room_description: String = "\nThe room appears sparse and forgotten. \
                                            A thin layer of dust lies on almost every \
-                                           surface you lay eyes on.\n"
+                                           surface you lay eyes on. There is an underlying \
+                                           familiarity to the room you can't quite put your \
+                                           finger on.\n"
         .to_string();
 
     // Instantiate Room
