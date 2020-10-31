@@ -1,4 +1,4 @@
-# rust-text-adventure-exercise
+# Alexei Ozerov's Rust Text Adventure Exercise
 An introductory effort to get a better understanding of the Rust Programming Language.
 
 # Learning Objectives
