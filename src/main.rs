@@ -20,14 +20,20 @@ fn main() {
                                            familiarity to the room you can't quite put your \
                                            finger on.\n"
         .to_string();
+    let living_room_poi: String = "There appears to be a large wooden cabinet in the corner, \
+                                  a mantlepiece lined with old photographs by the fireplace, \
+                                  and a doorway to the East, past the worn armchair.\n"
+        .to_string();
 
     // Instantiate Room
     let living_room = Room {
         description: living_room_description,
+        points_of_interest: living_room_poi,
         exits: living_room_exits,
     };
 
     living_room.describe_room();
+    living_room.describe_poi();
 
     // Ask For Input
     let _first_move = lib::take_user_input().to_string();
@@ -43,5 +49,9 @@ fn main() {
 impl ExpositRoom for Room {
     fn describe_room(&self) {
         println!("{}{}", color::Fg(color::Blue), self.description);
+    }
+
+    fn describe_poi(&self) {
+        println!("{}{}", color::Fg(color::Blue), self.points_of_interest);
     }
 }
