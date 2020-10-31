@@ -6,3 +6,8 @@ An introductory effort to get a better understanding of the Rust Programming Lan
 2. Understand how to use Structs, Traits & Impl
 3. Get practice with types!
 4. Enjoy the language!
+
+# Structure
+1. main.rs  -> Runtime
+2. lib.rs   -> Functions & Utilities
+3. level.rs -> Level Structs & Traits
