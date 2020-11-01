@@ -1,12 +1,22 @@
 mod level;
 mod lib;
+mod logic;
 
 use crate::level::ExpositRoom;
 use crate::level::Room;
+use crate::logic::ManageState;
+use crate::logic::PlayerState;
 
 use termion::color;
 
 fn main() {
+    // The current player state
+    // 0 = Unconsious
+    // 1 = Anxious
+    // 2 = Confident
+    // 3 = Neutral
+    let mut current_state: u8 = 0;
+
     // Game Introduction
     lib::loading_screen();
     lib::pause_text(1500);
@@ -42,10 +52,16 @@ fn main() {
         color::Fg(color::Red),
         _first_move
     );
+
+    let player_state = PlayerState {
+        anxiety_or_confidence: 5u8,
+    };
+
+    current_state = player_state.parse_state(current_state);
+    println!("{}", current_state);
 }
 
-// Impl of Trait ExpositRoom
-// for Struct Room
+// Impl of Trait ExpositRoom For Struct Room
 impl ExpositRoom for Room {
     fn describe_room(&self) {
         println!("{}{}", color::Fg(color::Blue), self.description);
@@ -53,5 +69,21 @@ impl ExpositRoom for Room {
 
     fn describe_poi(&self) {
         println!("{}{}", color::Fg(color::Blue), self.points_of_interest);
+    }
+}
+
+// Impl Trait Manage State for Struct PlayerState
+impl ManageState for PlayerState {
+    fn parse_state(&self, mut current_state: u8) -> u8 {
+        if self.anxiety_or_confidence == 5 {
+            current_state = 3u8;
+            return current_state;
+        } else if self.anxiety_or_confidence > 5 {
+            current_state = 2u8;
+            return current_state;
+        } else {
+            current_state = 1u8;
+            return current_state;
+        }
     }
 }
