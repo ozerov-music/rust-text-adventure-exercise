@@ -1,7 +1,7 @@
 // Room Data Structure
-pub struct Room {
-    pub description: String,
-    pub points_of_interest: String,
+pub struct Room<'a> {
+    pub description: &'a str,
+    pub points_of_interest: &'a str,
     pub exits: Vec<String>,
 }
 

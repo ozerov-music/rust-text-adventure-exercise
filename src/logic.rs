@@ -6,7 +6,8 @@ pub struct PlayerState {
 
 // Traits For Managing Player State
 pub trait ManageState {
-    fn parse_state(&self, current_state: u8) -> u8;
+    fn update_state(&self) -> u8;
+    fn current_feeling(&self, player_state: u8) -> &str;
     // fn increase_state_score(&self);
     // fn decrease_state_score(&self);
     // fn anxious_response(&self, message: String);
