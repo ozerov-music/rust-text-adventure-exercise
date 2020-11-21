@@ -9,4 +9,5 @@ pub struct Room<'a> {
 pub trait ExpositRoom {
     fn describe_room(&self);
     fn describe_poi(&self);
+    fn describe_exits(&self);
 }

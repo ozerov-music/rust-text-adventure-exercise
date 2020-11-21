@@ -26,7 +26,8 @@ fn main() {
     lib::game_opening();
 
     // Init Living Room Data
-    let living_room_exits = Vec::new();
+    let mut living_room_exits = Vec::new();
+    living_room_exits.push("Kitchen Door".to_string());
     let living_room_description = "\nThe room appears sparse and forgotten. \
                                            A thin layer of dust lies on almost every \
                                            surface you lay eyes on. There is an underlying \
@@ -51,6 +52,7 @@ fn main() {
     // Describe the room & points of interest
     living_room.describe_room();
     living_room.describe_poi();
+    living_room.describe_exits();
 
     // Ask For Input from Player
     let _first_move = lib::take_user_input().to_string();
@@ -74,6 +76,15 @@ impl<'a> ExpositRoom for Room<'_> {
 
     fn describe_poi(&self) {
         println!("{}{}", color::Fg(color::Blue), self.points_of_interest);
+    }
+
+    fn describe_exits(&self) {
+        for exit in &self.exits {
+            println!(
+                "You note that the exits to the room are as follows: \n{:10}",
+                exit
+            );
+        }
     }
 }
 
